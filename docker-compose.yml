@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  php-apache-environment:
+    image: dillahani/php
+    container_name: php-apache
+    depends_on:
+      - db
+    volumes:
+      -./php/src:/var/www/html/
+    ports:
+      - 80:80
+    networks:
+      -backend
+
+  db:
+    container_name: db
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: tokoonline (3)
+    ports:
+      -"3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+      - ./tokoonline (3).sql:/docker-entrypoint-intdb.d/php_tour.sql
+    networks:
+      - backend
+
+volumes:
+  db:
+
+networks:
+  backend:
+    name: backend-network
+    ipan:
+      driver: default
+      config:
+        - subnet: 172.10.0.0/24
