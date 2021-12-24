@@ -1,1 +1,1 @@
-<?php $koneksi = new mysqli("localhost","root","","tokoonline"); ?>
+<?php $koneksi = new mysqli("172.88.0.2","root","admin","tokoonline"); ?>

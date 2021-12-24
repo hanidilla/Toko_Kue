@@ -24,8 +24,8 @@ jobs:
 
       - name: 'Build and push'
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/php .
-          docker push ${{ secrets.DOCKERHUB_USERNAME}}/php
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/php-uas .
+          docker push ${{ secrets.DOCKERHUB_USERNAME}}/php-uas
         working-directory: ./php
 
       - name: 'Write config'
